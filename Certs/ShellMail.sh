@@ -7,7 +7,8 @@
 # function UsageMethod(){
 
 # }
-
+SenderUser=$1
+SenderPassword=$2
 function Certs(){
 	[ ! -d /etc/ssl/SendMail_ssl ] && mkdir -vp /etc/ssl/SendMail_ssl
 	# 获取邮件服务器证书内容（可以去掉管道服 "|"，看执行过程）
@@ -25,10 +26,8 @@ function Certs(){
 
 function ConfigureMail(){
 # 阿里云封闭25端口，所以不能通过默认的端口（25）发送邮箱，需要通过邮箱服务器的加密端口（465）来完成发送邮件的服务
-SenderUser=$1
-SenderPassword=$2
 if [ -f /etc/mail.rc ]; then
-	if [ $(grep "ssl-verify=ignore" /etc/mail.rc ) != "set ssl-verify=ignore" ]; then
+	if [[ $(grep "ssl-verify=ignore" /etc/mail.rc ) != "set ssl-verify=ignore" ]]; then
 		#发送邮件后显示的邮件发送方
 		echo "set from=${SenderUser}" >>/etc/mail.rc 
 		#腾讯企业邮箱smtp邮件服务器地址
