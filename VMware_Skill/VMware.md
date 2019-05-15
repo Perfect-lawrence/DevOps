@@ -285,6 +285,8 @@ Kubernetes_master
 [root@elk xiangxh]# vmrun -T ws clone /data/VMware_v14.2/node1/Kubernetes.vmx  /data/VMware_v14.2/node2/node2.vmx full -cloneName=node2
 
 [root@elk xiangxh]# vmrun -T ws clone /data/VMware_v14.2/node1/Kubernetes.vmx  /data/VMware_v14.2/node3/node3.vmx linked -snapshot=system_init -cloneName=node3
+
+for num in {7..19}; do vmrun -T ws clone /data/VMware_v14.2/Node_20/Node_20.vmx  /data/VMware_v14.2/Node_${num}/Node_${num}.vmx full -cloneName=Node_${num}; sleep 10; done
 ```
 
 
