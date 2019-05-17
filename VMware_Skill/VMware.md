@@ -253,6 +253,8 @@ Enabling Shared Folders with Workstation on a Windows host
 
 ```
 [root@elk xiangxh]# vmrun -T ws snapshot /data/VMware_v14.2/node1/Kubernetes.vmx snapshot_name
+[root@elk xiangxh]#  for i in {2..5};do vmrun -T ws snapshot /data/VMware_v14.2/Node_$i/Node_$i.vmx system_init;done
+[root@elk ssh_vmware_machine]# for i in {7..19};do vmrun -T ws snapshot /data/VMware_v14.2/Node_$i/Node_$i.vmx system_init;done
 
 ```
 
@@ -263,7 +265,11 @@ Enabling Shared Folders with Workstation on a Windows host
 Total snapshots: 2
 system_init
 Kubernetes_master
-
+[root@elk ssh_vmware_machine]# vmrun -T ws listSnapshots /data/VMware_v14.2/Node_6/Node_6.vmx
+Total snapshots: 1
+system_init
+[root@elk ssh_vmware_machine]# for i in {1..5};do vmrun -T ws listSnapshots /data/VMware_v14.2/Node_$i/Node_$i.vmx;done
+[root@elk ssh_vmware_machine]# for i in {7..19};do vmrun -T ws listSnapshots /data/VMware_v14.2/Node_$i/Node_$i.vmx;done
 ```
 
 ## 恢复到快照:snapshot
