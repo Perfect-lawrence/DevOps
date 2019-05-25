@@ -220,6 +220,8 @@ Enabling Shared Folders with Workstation on a Windows host
 
 [root@elk xiangxh]# vmrun -T ws start /data/VMware_v14.2/node1/Kubernetes.vmx gui    # 图形界面启动(前提有安装的图形界面)
 
+[root@elk xiangxh]# for i in {1,2,3};do vmrun -T ws start /data/Kubernetes_Docker/Server_$i/Server_$i.vmx nogui; sleep 5;done
+
 ```
 
 ## 关闭虚拟机
@@ -276,6 +278,7 @@ system_init
 
 ```
 [root@elk xiangxh]# vmrun -T ws revertToSnapshot /data/VMware_v14.2/node1/Kubernetes.vmx system_init
+[root@elk xiangxh]# for i in {1,2,3};do vmrun -T ws revertToSnapshot /data/Kubernetes_Docker/Server_$i/Server_$i.vmx system_init;done
 ```
 
 ## 删除快照:snapshot
