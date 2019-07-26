@@ -29,6 +29,10 @@ function ConfigureMail(){
 if [ -f /etc/mail.rc ]; then
 	if [[ $(grep "ssl-verify=ignore" /etc/mail.rc ) != "set ssl-verify=ignore" ]]; then
 		#发送邮件后显示的邮件发送方
+		# Shell发送附件邮件&中文乱码
+		echo "set charset="utf-8"" >>/etc/mail.rc
+                echo "set send_charset="utf-8"" >>/etc/mail.rc
+
 		echo "set from=${SenderUser}" >>/etc/mail.rc 
 		#腾讯企业邮箱smtp邮件服务器地址
 		echo 'set smtp="smtps://smtp.exmail.qq.com:465"' >>/etc/mail.rc
