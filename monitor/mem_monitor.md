@@ -1,0 +1,18 @@
+# 本文为您介绍云监控中内存使用率的计算方法。
+
+* 在云监控中，内存的使用率计算公式如下：
+
+* (mem_total - (mem_free + mem_buffer + mem_cache)) /mem_total
+
+* 可以使用 cat /proc/meminfo命令检查mem_free， mem_buffer ， mem_cache的使用量。 例如：
+
+```bash
+
+[root@localhost ~]# cat /proc/meminfo MemTotal: 8011936 kBMemFree: 227336 kBBuffers: 277872 kBCached: 1451828 kB
+```
+
+
+* 计算方法：(8011936 - （227336 + 277872 + 1451828）) / 8011936
+
+* 计算结果：内存使用率约等于 75%。
+
